@@ -6,7 +6,7 @@
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 15:31:58 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/15 13:57:56 by hekang           ###   ########.fr       */
+/*   Updated: 2021/06/15 16:39:05 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,30 +35,30 @@ void		linsert(t_dllist *plist, int data)
 	(plist->numofdata)++;
 }
 
-int		lfirst(t_dllist *plist, int *pdata)
-{
-	if (plist->head->next == plist->tail)
-		return (FALSE);
-	plist->cur = plist->head->next;
-	*pdata = plist->cur->data;
-	return (TRUE);
-}
+// int		lfirst(t_dllist *plist, int *pdata)
+// {
+// 	if (plist->head->next == plist->tail)
+// 		return (FALSE);
+// 	plist->cur = plist->head->next;
+// 	*pdata = plist->cur->data;
+// 	return (TRUE);
+// }
 
-int		lremove(t_dllist *plist)
-{
-	t_node	*rpos;
-	int		remv;
+// int		lremove(t_dllist *plist)
+// {
+// 	t_node	*rpos;
+// 	int		remv;
 	
-	rpos = plist->cur;
-	remv = rpos->data;
-	plist->cur->prev->next = plist->cur->next;
-	plist->cur->next->prev = plist->cur->prev;
+// 	rpos = plist->cur;
+// 	remv = rpos->data;
+// 	plist->cur->prev->next = plist->cur->next;
+// 	plist->cur->next->prev = plist->cur->prev;
 
-	plist->cur = plist->cur->prev;
-	free(rpos);
-	(plist->numofdata)--;
-	return (remv);
-}
+// 	plist->cur = plist->cur->prev;
+// 	free(rpos);
+// 	(plist->numofdata)--;
+// 	return (remv);
+// }
 
 int		lcount(t_dllist *plist)
 {

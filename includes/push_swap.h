@@ -6,7 +6,7 @@
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 15:12:54 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/15 14:12:50 by hekang           ###   ########.fr       */
+/*   Updated: 2021/06/15 16:32:26 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 typedef struct		s_node
 {
 	int				data;
+	int				index;
 	struct s_node	*prev;
 	struct s_node	*next;
 }                   t_node;
@@ -28,9 +29,10 @@ typedef struct		s_node
 typedef struct		s_dllist
 {
 	int				numofdata;
+	int				max;
+	int				data;
 	struct s_node	*head;
 	struct s_node	*tail;
-	struct s_node	*cur;
 }                   t_dllist;
 
 
