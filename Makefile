@@ -6,17 +6,19 @@
 #    By: hekang <hekang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/14 00:08:03 by hekang            #+#    #+#              #
-#    Updated: 2021/05/20 18:16:38 by hekang           ###   ########.fr        #
+#    Updated: 2021/06/15 14:06:11 by hekang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC		= img_utils.c main.c mlx_utils.c ray_utils.c vec_calc_apply.c vec_calc.c vec_create.c \
+SRC		= push_swap.c ft_list.c
 
 SRCDIR	= ./srcs/
 SRCS 	= $(addprefix $(SRCDIR), $(SRC))
 OBJS	= $(SRCS:.c=.o)
 
 INCDIR	= ./includes/
+LIBDIR	= ./libft/
+LIBNAME = libft.a
 
 NAME	= push_swap
 
@@ -27,8 +29,12 @@ RM 		= rm -f
 %.o:		%.c
 		$(GCC) $(GCCFLAG) -I$(INCDIR) -c $< -o $@
 
-$(NAME):	$(OBJS)
-		$(GCC) $(GCCFLAG) -I$(INCDIR) -o $(NAME) $(OBJS)
+$(NAME):	$(LIBNAME) $(OBJS)
+		$(GCC) $(GCCFLAG) -I$(INCDIR) -o $(NAME) $(OBJS) $(LIBNAME)
+
+$(LIBNAME):
+		@$(MAKE) -C $(LIBDIR) bonus
+		@cp $(addprefix $(LIBDIR), $(LIBNAME)) $(LIBNAME)
 
 all:		$(NAME)
 
@@ -36,7 +42,8 @@ clean:
 		$(RM) $(OBJS)
 
 fclean:		clean
-		$(RM) $(NAME)
+		$(RM) $(NAME) $(LIBNAME)
+		@$(MAKE) -C $(LIBDIR) fclean
 
 re:			fclean all
 

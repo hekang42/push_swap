@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/14 15:12:54 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/14 16:43:11 by hekang           ###   ########.fr       */
+/*   Created: 2020/10/03 00:39:26 by hekang            #+#    #+#             */
+/*   Updated: 2021/03/18 11:26:37 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
+#include "libft.h"
 
-typedef struct		s_node
+void	*ft_calloc(size_t count, size_t size)
 {
-	int				data;
-	struct s_node	*prev;
-	struct s_node	*next;
-}                   t_node;
+	void *str;
 
-typedef struct		s_dllist
-{
-	int				size;
-	struct s_node	*head;
-	struct s_node	*tail;
-}                   t_dllist;
+	if (!(str = (void *)malloc(count * size)))
+	{
+		write(1, "Error\n ** Malloc Error **\n", 26);
+		exit(EXIT_SUCCESS);
+	}
+	if (str == 0)
+		return (0);
+	ft_memset(str, 0, count * size);
+	return (str);
+}
