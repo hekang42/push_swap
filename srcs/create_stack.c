@@ -6,7 +6,7 @@
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 09:47:11 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/21 14:08:11 by hekang           ###   ########.fr       */
+/*   Updated: 2021/06/21 20:48:49 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int				atoi_check(char *str, t_node *stack)
     num = ft_atoll(str);
 	if (num > 2147483647 || num < -2147483648)
 		error_and_clear(stack);
-
     cur = stack;
 	while (cur)
 	{
@@ -47,7 +46,7 @@ static int	ft_isdigit_str(char *str)
 	while (str[cnt])
 	{	
 		c = str[cnt++];
-		if (c < '0' || c > '9')
+		if ((c < '0' || c > '9') && c != '-')
 			return (0);
 	}
 	return (1);
