@@ -6,7 +6,7 @@
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 15:12:54 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/21 15:11:17 by hekang           ###   ########.fr       */
+/*   Updated: 2021/06/21 15:26:13 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	rotate(t_node **stack);
 void	rrotate(t_node **stack);
 
 void	sort_three(t_node **stack_a, t_node **stack_b);
+void	sort_five(t_node **stack_a, t_node **stack_b);
 
 
 #endif

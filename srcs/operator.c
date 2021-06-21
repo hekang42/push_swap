@@ -6,7 +6,7 @@
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 10:46:49 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/21 15:11:09 by hekang           ###   ########.fr       */
+/*   Updated: 2021/06/21 15:41:53 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	operator(char *op, t_node **stack_a, t_node **stack_b)
 	if (!ft_strncmp(op, "sb", len) || !ft_strncmp(op, "ss", len))
 		swap(stack_b);
 	if (!ft_strncmp(op, "pa", len))
-		push(stack_a, stack_b);
-	if (!ft_strncmp(op, "pb", len))
 		push(stack_b, stack_a);
+	if (!ft_strncmp(op, "pb", len))
+		push(stack_a, stack_b);
 	if (!ft_strncmp(op, "ra", len) || !ft_strncmp(op, "rr", len))
 		rotate(stack_a);
 	if (!ft_strncmp(op, "rb", len) || !ft_strncmp(op, "rr", len))
