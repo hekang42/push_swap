@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   put_index.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/20 18:20:46 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/21 19:57:55 by hekang           ###   ########.fr       */
+/*   Created: 2021/06/21 16:25:09 by hekang            #+#    #+#             */
+/*   Updated: 2021/06/21 19:19:09 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int			main(int argc, char **argv)
+int				calc_index(int n, t_node *stack)
 {
-	t_node	*stack_a;
-	t_node	*stack_b;
+	int			index;
 
-	stack_a = create_stack(argc, argv);
-	stack_b = NULL;
-	stack_sort(stack_a, stack_b);
-	clear_stack(&stack_a);
-	clear_stack(&stack_b);
-	return (0);
+	index = 0;
+	while (stack)
+	{
+		if (n > stack->content)
+			index++;
+		stack = stack->next;
+	}
+	return (index);
+}
+
+void			put_index(t_node *stack)
+{
+	t_node		*cur;
+	
+	cur = stack;
+	while (cur)
+	{
+		cur->index = calc_index(cur->content, stack);
+		cur = cur->next;
+	}
 }
