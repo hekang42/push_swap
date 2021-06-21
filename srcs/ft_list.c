@@ -6,7 +6,7 @@
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 15:31:58 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/15 16:39:05 by hekang           ###   ########.fr       */
+/*   Updated: 2021/06/21 10:12:56 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	listinit(t_dllist *plist)
 void		linsert(t_dllist *plist, int data)
 {
 	t_node	*newnode = (t_node *)malloc(sizeof(t_node));
-	newnode->data = data;
+	
+	newnode->content = data;
 	newnode->prev = plist->tail->prev;
 	plist->tail->prev->next = newnode;
 	newnode->next = plist->tail;

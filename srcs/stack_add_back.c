@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   stack_add_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/20 18:20:46 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/21 14:14:46 by hekang           ###   ########.fr       */
+/*   Created: 2021/06/21 10:13:40 by hekang            #+#    #+#             */
+/*   Updated: 2021/06/21 14:07:41 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int			main(int argc, char **argv)
+void	stack_add_back(t_node **lst, t_node *new_list)
 {
-	t_node	*stack_a;
-	t_node	*stack_b;
+	t_node	*tmp;
 
-	stack_a = create_stack(argc, argv);
-	stack_b = NULL;
-	stack_sort(stack_a, stack_b);
+	tmp = *lst;
+	if (*lst == NULL)
+	{
+		*lst = new_list;
+		return ;
+	}
+    while ((*lst)->next)
+        (*lst) = (*lst)->next;
+	(*lst)->next = new_list;
+	new_list->prev = *lst;
+	*lst = tmp;
 
-	// while(stack_a)
-	// {
-	// 	printf("%d\n", stack_a->content);
-	// 	stack_a = stack_a->next;
-	// }
-	// clear_stack(&stack_a);
-	// clear_stack(&stack_b);
-	return (0);
 }

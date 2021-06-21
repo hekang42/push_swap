@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   rrotate.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/20 18:20:46 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/21 14:14:46 by hekang           ###   ########.fr       */
+/*   Created: 2021/06/21 11:17:01 by hekang            #+#    #+#             */
+/*   Updated: 2021/06/21 15:10:54 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int			main(int argc, char **argv)
+void		rrotate(t_node **stack)
 {
-	t_node	*stack_a;
-	t_node	*stack_b;
+	t_node	*tmp;
+	t_node	*last;
 
-	stack_a = create_stack(argc, argv);
-	stack_b = NULL;
-	stack_sort(stack_a, stack_b);
-
-	// while(stack_a)
-	// {
-	// 	printf("%d\n", stack_a->content);
-	// 	stack_a = stack_a->next;
-	// }
-	// clear_stack(&stack_a);
-	// clear_stack(&stack_b);
-	return (0);
+	if (*stack == NULL || (*stack)->next == NULL)
+		return ;
+	tmp = *stack;
+	last = *stack;
+	while (last->next)
+        (last) = (last)->next;
+	last->prev->next = NULL;
+	last->next = tmp;
+	tmp->prev = last;
+	last->prev = NULL;
+	*stack = last;
 }

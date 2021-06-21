@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   clear_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/20 18:20:46 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/21 14:14:46 by hekang           ###   ########.fr       */
+/*   Created: 2021/06/21 10:27:32 by hekang            #+#    #+#             */
+/*   Updated: 2021/06/21 13:40:38 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int			main(int argc, char **argv)
+void		clear_stack(t_node **stack)
 {
-	t_node	*stack_a;
-	t_node	*stack_b;
+	t_node	*tmp;
 
-	stack_a = create_stack(argc, argv);
-	stack_b = NULL;
-	stack_sort(stack_a, stack_b);
-
-	// while(stack_a)
-	// {
-	// 	printf("%d\n", stack_a->content);
-	// 	stack_a = stack_a->next;
-	// }
-	// clear_stack(&stack_a);
-	// clear_stack(&stack_b);
-	return (0);
+	while (*stack)
+	{
+		// printf("%d\n", (*stack)->content);
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
+	}
+	*stack = 0;
 }

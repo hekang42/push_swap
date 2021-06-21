@@ -6,7 +6,7 @@
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 15:12:54 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/15 16:32:26 by hekang           ###   ########.fr       */
+/*   Updated: 2021/06/21 15:11:17 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define TRUE 1
 typedef struct		s_node
 {
-	int				data;
+	int				content;
 	int				index;
 	struct s_node	*prev;
 	struct s_node	*next;
@@ -44,6 +44,22 @@ int		lnext(t_dllist *plist, int *data);
 int		lprevious(t_dllist *plist, int *data);
 int		lcount(t_dllist *plist);
 int		lremove(t_dllist *plist);
+
+
+void	stack_add_back(t_node **lst, t_node *new_list);
+t_node	*stack_new(int content);
+t_node	*create_stack(int argc, char **argv);
+void	clear_stack(t_node **stack);
+void	stack_sort(t_node *stack_a, t_node *stack_b);
+int		ft_stacksize(t_node *lst);
+
+void	operator(char *op, t_node **stack_a, t_node **stack_b);
+void	swap(t_node **stack);
+void	push(t_node **stack_first, t_node **stack_second);
+void	rotate(t_node **stack);
+void	rrotate(t_node **stack);
+
+void	sort_three(t_node **stack_a, t_node **stack_b);
 
 
 #endif
