@@ -6,7 +6,7 @@
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 15:12:54 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/22 18:58:24 by hekang           ###   ########.fr       */
+/*   Updated: 2021/06/22 20:55:13 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,14 @@ typedef struct		s_node
 	struct s_node	*next;
 }					t_node;
 
-typedef struct		s_dllist
-{
-	int				numofdata;
-	int				max;
-	int				data;
-	struct s_node	*head;
-	struct s_node	*tail;
-}					t_dllist;
-
 void				stack_add_back(t_node **lst, t_node *new_list);
 t_node				*stack_new(int content);
 t_node				*create_stack(int argc, char **argv);
 void				clear_stack(t_node **stack);
 void				stack_sort(t_node *stack_a, t_node *stack_b);
 int					ft_ssize(t_node *lst);
-void				operator(char *op, t_node **stack_a, t_node **stack_b);
+void				operator(char *op, t_node **stack_a, t_node **stack_b,
+				int visual);
 void				swap(t_node **stack);
 void				push(t_node **stack_first, t_node **stack_second);
 void				rotate(t_node **stack);

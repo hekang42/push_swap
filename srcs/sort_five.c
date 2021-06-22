@@ -6,7 +6,7 @@
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 15:22:30 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/22 17:23:38 by hekang           ###   ########.fr       */
+/*   Updated: 2021/06/22 20:36:40 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,18 @@ void		sort_five(t_node **stack_a, t_node **stack_b)
 	{
 		if ((*stack_a)->index >= 3)
 		{
-			operator("pb", stack_a, stack_b);
+			operator("pb", stack_a, stack_b, 1);
 			cnt++;
 		}
 		else
-			operator("ra", stack_a, stack_b);
+			operator("ra", stack_a, stack_b, 1);
 	}
 	sort_three(stack_a, stack_b);
 	cur = *stack_b;
 	if (cur->index == 3)
-		operator("sb", stack_a, stack_b);
-	operator("pa", stack_a, stack_b);
-	operator("pa", stack_a, stack_b);
-	operator("ra", stack_a, stack_b);
-	operator("ra", stack_a, stack_b);
+		operator("sb", stack_a, stack_b, 1);
+	operator("pa", stack_a, stack_b, 1);
+	operator("pa", stack_a, stack_b, 1);
+	operator("ra", stack_a, stack_b, 1);
+	operator("ra", stack_a, stack_b, 1);
 }

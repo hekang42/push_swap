@@ -6,7 +6,7 @@
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 09:47:11 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/22 17:21:18 by hekang           ###   ########.fr       */
+/*   Updated: 2021/06/22 19:37:23 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,15 @@ int				ft_isdigit_str(char *str)
 	int			c;
 
 	cnt = 0;
+	if (str[cnt] == '-')
+		cnt++;
 	while (str[cnt])
 	{
 		c = str[cnt++];
-		if ((c < '0' || c > '9') && c != '-')
+		if ((c < '0' || c > '9'))
+		{
 			return (0);
+		}
 	}
 	return (1);
 }

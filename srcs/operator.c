@@ -6,18 +6,18 @@
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 10:46:49 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/22 17:22:11 by hekang           ###   ########.fr       */
+/*   Updated: 2021/06/22 20:53:15 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	operator(char *op, t_node **stack_a, t_node **stack_b)
+void	operator(char *op, t_node **stack_a, t_node **stack_b, int visual)
 {
 	int	len;
 
-	ft_putstr_fd(op, 1);
-	write(1, "\n", 1);
+	if (visual != 0)
+		ft_putendl_fd(op, 1);
 	len = ft_strlen(op);
 	if (!ft_strncmp(op, "sa", len) || !ft_strncmp(op, "ss", len))
 		swap(stack_a);

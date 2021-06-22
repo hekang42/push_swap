@@ -1,6 +1,8 @@
 {
     "files.associations": {
-        "*.html": "html",
-        "push_swap.h": "c"
-    }
+		"*.html": "html",
+		"push_swap.h": "c",
+		"libft.h": "c",
+		"unistd.h": "c"
+	}
 }

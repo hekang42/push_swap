@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/20 18:20:46 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/22 19:10:10 by hekang           ###   ########.fr       */
+/*   Created: 2020/10/08 19:12:45 by hekang            #+#    #+#             */
+/*   Updated: 2021/06/22 20:19:41 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int			main(int argc, char **argv)
-{
-	t_node	*stack_a;
-	t_node	*stack_b;
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 500
+# endif
 
-	stack_a = create_stack(argc, argv);
-	stack_b = NULL;
-	stack_sort(stack_a, stack_b);
-	clear_stack(&stack_b);
-	clear_stack(&stack_a);
-	return (0);
-}
+# include <stdlib.h>
+# include <limits.h>
+# include <unistd.h>
+# include "libft.h"
+
+int		get_next_line(int fd, char **line);
+int		checknl(char *s);
+
+#endif

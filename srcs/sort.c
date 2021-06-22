@@ -6,7 +6,7 @@
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 16:24:21 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/22 19:03:55 by hekang           ###   ########.fr       */
+/*   Updated: 2021/06/22 20:46:25 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int			sort_from_b_3(t_node **s_b, int *rb_count, \
 
 void		sort_from_b_2(t_node **s_a, t_node **s_b, int *flag, int *flag2)
 {
-	operator("pa", s_a, s_b);
+	operator("pa", s_a, s_b, 1);
 	if (*flag == 1)
 		*flag = operator_return_false("sa", s_a, s_b);
 	if (*flag2 == 1)
@@ -48,7 +48,7 @@ void		sort_from_b(t_node **stack_a, t_node **stack_b, int flag, int flag2)
 				else if (flag && (*stack_b)->index == find_index - 2)
 					flag2 = operator_pa_ra(stack_a, stack_b);
 				else
-					operator("rb", stack_a, stack_b);
+					operator("rb", stack_a, stack_b, 1);
 		else
 			while (rrb_count-- + 1 && ((*stack_b)->index != find_index))
 				if ((*stack_b)->index == find_index - 1)
@@ -56,7 +56,7 @@ void		sort_from_b(t_node **stack_a, t_node **stack_b, int flag, int flag2)
 				else if (flag && (*stack_b)->index == find_index - 2)
 					flag2 = operator_pa_ra_rrb(stack_a, stack_b);
 				else
-					operator("rrb", stack_a, stack_b);
+					operator("rrb", stack_a, stack_b, 1);
 		sort_from_b_2(stack_a, stack_b, &flag, &flag2);
 	}
 }
@@ -64,9 +64,9 @@ void		sort_from_b(t_node **stack_a, t_node **stack_b, int flag, int flag2)
 void		operate_split_1(t_node **stack_a, t_node **stack_b, int size, int c)
 {
 	c += 0;
-	operator("pb", stack_a, stack_b);
+	operator("pb", stack_a, stack_b, 1);
 	if ((*stack_b)->index > size / 2)
-		operator("rb", stack_a, stack_b);
+		operator("rb", stack_a, stack_b, 1);
 }
 
 void		sort(t_node **stack_a, t_node **stack_b)
@@ -86,7 +86,7 @@ void		sort(t_node **stack_a, t_node **stack_b)
 			operate_split_1(stack_a, stack_b, size, count++);
 		else
 			while ((*stack_a)->index >= size)
-				operator("ra", stack_a, stack_b);
+				operator("ra", stack_a, stack_b, 1);
 	size = ft_ssize(*stack_a) / chunk_count + ft_ssize(*stack_a) % chunk_count;
 	if (size < 1)
 	{

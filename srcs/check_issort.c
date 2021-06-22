@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   check_issort.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/20 18:20:46 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/22 19:10:10 by hekang           ###   ########.fr       */
+/*   Created: 2021/06/22 20:51:36 by hekang            #+#    #+#             */
+/*   Updated: 2021/06/22 20:52:59 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-int			main(int argc, char **argv)
+int			check_issort(t_node *stack_a, t_node *stack_b)
 {
-	t_node	*stack_a;
-	t_node	*stack_b;
+	int		count;
+	t_node	*cur;
 
-	stack_a = create_stack(argc, argv);
-	stack_b = NULL;
-	stack_sort(stack_a, stack_b);
-	clear_stack(&stack_b);
-	clear_stack(&stack_a);
-	return (0);
+	count = 0;
+	if (stack_b != NULL)
+		return (0);
+	while (stack_a)
+	{
+		cur = stack_a;
+		while (cur && cur->next)
+		{
+			if (cur->content > cur->next->content)
+				return (0);
+			cur = cur->next;
+		}
+		(stack_a) = (stack_a)->next;
+	}
+	return (1);
 }
