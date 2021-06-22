@@ -6,7 +6,7 @@
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 16:24:21 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/22 13:58:42 by hekang           ###   ########.fr       */
+/*   Updated: 2021/06/22 14:18:36 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,9 +170,11 @@ void		sort(t_node **stack_a, t_node **stack_b)
 	int		count;
 	int		size;
 	int		index_count;
+	int		chunk_count;
 	
 	put_index(*stack_a);
-	size = ft_stacksize(*stack_a) / 2;
+	chunk_count = 3;
+	size = ft_stacksize(*stack_a) / chunk_count + ft_stacksize(*stack_a) % chunk_count;
 	count = 0;
 	while (count < size)
 		if ((*stack_a)->index < size)
@@ -199,7 +201,7 @@ void		sort(t_node **stack_a, t_node **stack_b)
 				continue;
 		}
 	// print_stack(*stack_a);
-	size = ft_stacksize(*stack_a) / 2;
+	size = ft_stacksize(*stack_a) / chunk_count + ft_stacksize(*stack_a) % chunk_count;
 	if (size < 1)
 		sort_from_b(stack_a, stack_b);
 	else
