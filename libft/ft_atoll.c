@@ -6,18 +6,18 @@
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 22:40:21 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/21 08:27:33 by hekang           ###   ########.fr       */
+/*   Updated: 2021/06/22 18:58:04 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long long	ft_atoll(const char *str)
+long long				ft_atoll(const char *str)
 {
 	int					cnt;
 	unsigned long int	result;
 	int					minus;
-	
+
 	cnt = 0;
 	minus = 1;
 	result = 0;

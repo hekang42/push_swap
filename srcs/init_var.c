@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rrotate.c                                          :+:      :+:    :+:   */
+/*   init_var.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/21 11:17:01 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/22 17:23:24 by hekang           ###   ########.fr       */
+/*   Created: 2021/06/22 18:56:24 by hekang            #+#    #+#             */
+/*   Updated: 2021/06/22 19:03:57 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void		rrotate(t_node **stack)
+void		init_var(int *a, int *b, int *c)
 {
-	t_node	*tmp;
-	t_node	*last;
-
-	if (*stack == NULL || (*stack)->next == NULL)
-		return ;
-	tmp = *stack;
-	last = *stack;
-	while (last->next)
-		(last) = (last)->next;
-	last->prev->next = NULL;
-	last->next = tmp;
-	tmp->prev = last;
-	last->prev = NULL;
-	*stack = last;
+	*a = 0;
+	*b = 0;
+	*c = 0;
 }

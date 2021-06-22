@@ -6,167 +6,93 @@
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 16:24:21 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/22 16:44:25 by hekang           ###   ########.fr       */
+/*   Updated: 2021/06/22 19:03:55 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int			find_from_front(int find, t_node *stack)
+int			sort_from_b_3(t_node **s_b, int *rb_count, \
+				int *rrb_count)
 {
-	int		result;
-	t_node	*cur;
+	int		find_index;
 
-	cur = stack;
-	result = 0;
-	while (cur && cur->index != find )
-	{
-		result++;
-		cur = cur->next;
-	}
-	return (result);
+	find_index = ft_ssize(*s_b) - 1;
+	*rb_count = find_from_front(find_index, *s_b);
+	*rrb_count = find_from_rear(find_index, *s_b);
+	return (find_index);
 }
 
-int			find_from_rear(int find, t_node *stack)
+void		sort_from_b_2(t_node **s_a, t_node **s_b, int *flag, int *flag2)
 {
-	int		result;
-	t_node	*cur;
-
-	cur = stack;
-	while (cur->next)
-		cur = cur->next;
-	result = 0;
-	while (cur && cur->index != find)
-	{
-		result++;
-		cur = cur->prev;
-	}
-	return (result);
+	operator("pa", s_a, s_b);
+	if (*flag == 1)
+		*flag = operator_return_false("sa", s_a, s_b);
+	if (*flag2 == 1)
+		*flag2 = operator_return_false("rra", s_a, s_b);
 }
 
-int			find_index_smaller(int find, t_node *stack)
-{
-	int		front_count;
-	int		rear_count;
-	t_node	*cur;
-
-	cur = stack;
-	front_count = 0;
-	while (cur && cur->index >= find)
-	{
-		front_count++;
-		cur = cur->next;
-	}
-	cur = stack;
-	while (cur->next)
-		cur = cur->next;
-	rear_count = 1;
-	while (cur && cur->index > find)
-	{
-		rear_count++;
-		cur = cur->prev;
-	}
-	if (front_count >= rear_count)
-		return (ft_stacksize(stack) - rear_count);
-	return (front_count);
-}
-
-void		sort_from_b(t_node **stack_a, t_node **stack_b)
+void		sort_from_b(t_node **stack_a, t_node **stack_b, int flag, int flag2)
 {
 	int		find_index;
 	int		rb_count;
 	int		rrb_count;
-	int		flag;
-	int		flag2;
 
-	flag = 0;
-	flag2 = 0;
-	put_index(*stack_b);
 	while (*stack_b)
 	{
-		find_index = ft_stacksize(*stack_b) - 1;
-		rb_count = find_from_front(find_index, *stack_b); 
-		rrb_count = find_from_rear(find_index, *stack_b);
+		find_index = sort_from_b_3(stack_b, &rb_count, &rrb_count);
 		if (rb_count <= rrb_count)
-			while(rb_count--  && ((*stack_b)->index != find_index))
+			while (rb_count-- && ((*stack_b)->index != find_index))
 				if ((*stack_b)->index == find_index - 1)
-				{
-					operator("pa", stack_a, stack_b);
-					flag = 1;
-				}
+					flag = operator_pa(stack_a, stack_b);
 				else if (flag && (*stack_b)->index == find_index - 2)
-				{
-					operator("pa", stack_a, stack_b);
-					operator("ra", stack_a, stack_b);
-					flag2 = 1;
-				}	
+					flag2 = operator_pa_ra(stack_a, stack_b);
 				else
 					operator("rb", stack_a, stack_b);
 		else
-			while(rrb_count-- + 1 && ((*stack_b)->index != find_index))
+			while (rrb_count-- + 1 && ((*stack_b)->index != find_index))
 				if ((*stack_b)->index == find_index - 1)
-				{
-					operator("pa", stack_a, stack_b);
-					operator("rrb", stack_a, stack_b);
-					flag = 1;
-				}
+					flag = operator_pa_rrb(stack_a, stack_b);
 				else if (flag && (*stack_b)->index == find_index - 2)
-				{
-					operator("pa", stack_a, stack_b);
-					operator("ra", stack_a, stack_b);
-					operator("rrb", stack_a, stack_b);
-					flag2 = 1;
-				}
+					flag2 = operator_pa_ra_rrb(stack_a, stack_b);
 				else
 					operator("rrb", stack_a, stack_b);
-		operator("pa", stack_a, stack_b);
-		if (flag == 1)
-		{
-			operator("sa", stack_a, stack_b);
-			flag = 0;
-		}
-		if (flag2 == 1)
-		{
-			operator("rra", stack_a, stack_b);
-			flag2 = 0;
-		}
+		sort_from_b_2(stack_a, stack_b, &flag, &flag2);
 	}
+}
+
+void		operate_split_1(t_node **stack_a, t_node **stack_b, int size, int c)
+{
+	c += 0;
+	operator("pb", stack_a, stack_b);
+	if ((*stack_b)->index > size / 2)
+		operator("rb", stack_a, stack_b);
 }
 
 void		sort(t_node **stack_a, t_node **stack_b)
 {
 	int		count;
 	int		size;
-	int		index_count;
 	int		chunk_count;
-	
+	int		flag;
+	int		flag2;
+
+	init_var(&flag, &flag2, &count);
 	put_index(*stack_a);
-	if (ft_stacksize(*stack_a) > 250)
-		chunk_count = 5;
-	else
-		chunk_count = 3;
-	size = ft_stacksize(*stack_a) / chunk_count + ft_stacksize(*stack_a) % chunk_count;
-	count = 0;
+	chunk_count = (ft_ssize(*stack_a) > 250) ? 5 : 3;
+	size = ft_ssize(*stack_a) / chunk_count + ft_ssize(*stack_a) % chunk_count;
 	while (count < size)
 		if ((*stack_a)->index < size)
-		{
-			operator("pb", stack_a, stack_b);
-			if ((*stack_b)->index > size / 2 )
-				operator("rb", stack_a, stack_b);
-			count++;
-		}
+			operate_split_1(stack_a, stack_b, size, count++);
 		else
-		{
-			index_count = find_index_smaller(size, *stack_a);
-			while ((*stack_a)->index >= size && index_count != 0)
+			while ((*stack_a)->index >= size)
 				operator("ra", stack_a, stack_b);
-			// if ((*stack_a)->index < size || index_count == 0)
-			// 	continue;
-		}
-	size = ft_stacksize(*stack_a) / chunk_count + ft_stacksize(*stack_a) % chunk_count;
+	size = ft_ssize(*stack_a) / chunk_count + ft_ssize(*stack_a) % chunk_count;
 	if (size < 1)
-		sort_from_b(stack_a, stack_b);
+	{
+		put_index(*stack_b);
+		sort_from_b(stack_a, stack_b, flag, flag2);
+	}
 	else
 		sort(stack_a, stack_b);
-
 }

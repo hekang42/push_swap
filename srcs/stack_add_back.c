@@ -6,13 +6,13 @@
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 10:13:40 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/21 14:07:41 by hekang           ###   ########.fr       */
+/*   Updated: 2021/06/22 17:28:17 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	stack_add_back(t_node **lst, t_node *new_list)
+void		stack_add_back(t_node **lst, t_node *new_list)
 {
 	t_node	*tmp;
 
@@ -22,10 +22,9 @@ void	stack_add_back(t_node **lst, t_node *new_list)
 		*lst = new_list;
 		return ;
 	}
-    while ((*lst)->next)
-        (*lst) = (*lst)->next;
+	while ((*lst)->next)
+		(*lst) = (*lst)->next;
 	(*lst)->next = new_list;
 	new_list->prev = *lst;
 	*lst = tmp;
-
 }

@@ -6,12 +6,13 @@
 #    By: hekang <hekang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/14 00:08:03 by hekang            #+#    #+#              #
-#    Updated: 2021/06/22 16:42:32 by hekang           ###   ########.fr        #
+#    Updated: 2021/06/22 19:04:22 by hekang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC		= push_swap.c ft_list.c clear_stack.c stack_new.c stack_sort.c stack_add_back.c create_stack.c stack_size.c\
-		operator.c swap.c push.c rotate.c rrotate.c sort_three.c sort_five.c put_index.c sort.c print_stack.c
+SRC		= push_swap.c clear_stack.c stack_new.c stack_sort.c stack_add_back.c create_stack.c stack_size.c\
+		operator.c swap.c push.c rotate.c rrotate.c sort_three.c sort_five.c put_index.c sort.c print_stack.c operator_mix.c find_index.c\
+		init_var.c
 
 SRCDIR	= ./srcs/
 SRCS 	= $(addprefix $(SRCDIR), $(SRC))

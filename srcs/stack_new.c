@@ -6,13 +6,13 @@
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 10:11:01 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/21 10:11:23 by hekang           ###   ########.fr       */
+/*   Updated: 2021/06/22 17:28:34 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_node	*stack_new(int content)
+t_node		*stack_new(int content)
 {
 	t_node	*lst;
 

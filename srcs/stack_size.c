@@ -6,13 +6,13 @@
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 10:40:14 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/21 13:21:50 by hekang           ###   ########.fr       */
+/*   Updated: 2021/06/22 17:28:41 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_stacksize(t_node *lst)
+int	ft_ssize(t_node *lst)
 {
 	int cnt;
 

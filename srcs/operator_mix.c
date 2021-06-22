@@ -1,40 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_five.c                                        :+:      :+:    :+:   */
+/*   operator_mix.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/21 15:22:30 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/22 17:23:38 by hekang           ###   ########.fr       */
+/*   Created: 2021/06/22 17:08:32 by hekang            #+#    #+#             */
+/*   Updated: 2021/06/22 17:22:00 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void		sort_five(t_node **stack_a, t_node **stack_b)
+int		operator_pa(t_node **stack_a, t_node **stack_b)
 {
-	t_node	*cur;
-	int		cnt;
+	operator("pa", stack_a, stack_b);
+	return (1);
+}
 
-	cur = *stack_a;
-	cnt = 0;
-	while (cnt < 2)
-	{
-		if ((*stack_a)->index >= 3)
-		{
-			operator("pb", stack_a, stack_b);
-			cnt++;
-		}
-		else
-			operator("ra", stack_a, stack_b);
-	}
-	sort_three(stack_a, stack_b);
-	cur = *stack_b;
-	if (cur->index == 3)
-		operator("sb", stack_a, stack_b);
-	operator("pa", stack_a, stack_b);
+int		operator_pa_ra(t_node **stack_a, t_node **stack_b)
+{
 	operator("pa", stack_a, stack_b);
 	operator("ra", stack_a, stack_b);
+	return (1);
+}
+
+int		operator_pa_rrb(t_node **stack_a, t_node **stack_b)
+{
+	operator("pa", stack_a, stack_b);
+	operator("rrb", stack_a, stack_b);
+	return (1);
+}
+
+int		operator_pa_ra_rrb(t_node **stack_a, t_node **stack_b)
+{
+	operator("pa", stack_a, stack_b);
 	operator("ra", stack_a, stack_b);
+	operator("rrb", stack_a, stack_b);
+	return (1);
+}
+
+int		operator_return_false(char *op, t_node **stack_a, t_node **stack_b)
+{
+	operator(op, stack_a, stack_b);
+	return (0);
 }

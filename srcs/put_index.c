@@ -6,7 +6,7 @@
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 16:25:09 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/22 13:43:53 by hekang           ###   ########.fr       */
+/*   Updated: 2021/06/22 17:22:56 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int				calc_index(int n, t_node *stack)
 void			put_index(t_node *stack)
 {
 	t_node		*cur;
-	
+
 	cur = stack;
 	while (cur)
 	{
