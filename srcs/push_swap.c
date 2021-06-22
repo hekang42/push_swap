@@ -6,7 +6,7 @@
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 18:20:46 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/21 21:04:37 by hekang           ###   ########.fr       */
+/*   Updated: 2021/06/22 08:58:01 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int			main(int argc, char **argv)
 	stack_a = create_stack(argc, argv);
 	stack_b = NULL;
 	stack_sort(stack_a, stack_b);
+	print_stack(stack_a);
 	clear_stack(&stack_a);
 	clear_stack(&stack_b);
 	return (0);
