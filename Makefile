@@ -6,7 +6,7 @@
 #    By: hekang <hekang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/14 00:08:03 by hekang            #+#    #+#              #
-#    Updated: 2021/06/22 09:29:31 by hekang           ###   ########.fr        #
+#    Updated: 2021/06/22 16:42:32 by hekang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ RM 		= rm -f
 		$(GCC) $(GCCFLAG) -I$(INCDIR) -c $< -o $@
 
 $(NAME):	$(LIBNAME) $(OBJS)
-		$(GCC) $(GCCFLAG) -I$(INCDIR) -fsanitize=address -o $(NAME) $(OBJS) $(LIBNAME)
+		$(GCC) $(GCCFLAG) -I$(INCDIR) -o $(NAME) $(OBJS) $(LIBNAME)
 
 $(LIBNAME):
 		@$(MAKE) -C $(LIBDIR) bonus
