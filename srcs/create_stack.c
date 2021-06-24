@@ -6,7 +6,7 @@
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 09:47:11 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/24 09:12:44 by hekang           ###   ########.fr       */
+/*   Updated: 2021/06/24 09:42:18 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void			error_and_clear(t_node *stack)
 {
 	clear_stack(&stack);
-	write(1, "Error\n", 6);
+	ft_putendl_fd("Error", 2);
 	exit(1);
 }
 
@@ -67,7 +67,7 @@ t_node			*create_stack(int argc, char **argv)
 	while (++argc_count < argc)
 	{
 		if (!ft_isdigit_str(argv[argc_count])
-		|| ft_strlen(argv[argc_count]) > 10
+		|| ft_strlen(argv[argc_count]) > 11
 		|| ft_strlen(argv[argc_count]) == 0)
 			error_and_clear(result);
 		tmp = stack_new(atoi_check(argv[argc_count], result));

@@ -6,7 +6,7 @@
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 19:24:27 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/24 09:22:12 by hekang           ###   ########.fr       */
+/*   Updated: 2021/06/24 09:38:35 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ int			main(int argc, char **argv)
 	t_list	*instructions;
 
 	stack_a = create_stack(argc, argv);
+	if (!stack_a)
+		return (0);
 	stack_b = NULL;
 	instructions = read_instruction();
 	if (!exec_instruction(instructions, &stack_a, &stack_b))
