@@ -6,7 +6,7 @@
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 10:34:23 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/24 10:49:47 by hekang           ###   ########.fr       */
+/*   Updated: 2021/06/24 11:21:47 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void		stack_sort(t_node *stack_a, t_node *stack_b)
 
 	put_index(stack_a);
 	size = ft_ssize(stack_a);
-
 	if (check_issort(stack_a, stack_b))
 		return ;
 	if (size == 1)
