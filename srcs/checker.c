@@ -6,7 +6,7 @@
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 19:24:27 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/22 20:56:10 by hekang           ###   ########.fr       */
+/*   Updated: 2021/06/24 09:22:12 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,15 @@ int			switch_instruction(char *instruction, t_node **stack_a,
 	return (1);
 }
 
+void		put_error_and_clear(t_list *instructions, char *instruction)
+{
+	if (instruction)
+		free(instruction);
+	ft_lstclear(&instructions, free);
+	ft_putendl_fd("Error", 2);
+	exit(1);
+}
+
 int			exec_instruction(t_list *instructions, t_node **stack_a,
 		t_node **stack_b)
 {
@@ -52,15 +61,6 @@ int			exec_instruction(t_list *instructions, t_node **stack_a,
 	return (1);
 }
 
-void		put_error_with_clear(t_list *result, char *instruction)
-{
-	if (instruction)
-		free(instruction);
-	ft_lstclear(&result, free);
-	ft_putendl_fd("Error", 2);
-	exit(1);
-}
-
 t_list		*read_instruction(void)
 {
 	int		gnl_status;
@@ -74,12 +74,12 @@ t_list		*read_instruction(void)
 	{
 		tmp = ft_lstnew(instruction);
 		if (tmp == NULL)
-			put_error_with_clear(instructions, instruction);
+			put_error_and_clear(instructions, instruction);
 		ft_lstadd_back(&instructions, tmp);
 		gnl_status = get_next_line(0, &instruction);
 	}
 	if (ft_strlen(instruction) || gnl_status == -1)
-		put_error_with_clear(instructions, NULL);
+		put_error_and_clear(instructions, NULL);
 	free(instruction);
 	return (instructions);
 }
@@ -88,15 +88,22 @@ int			main(int argc, char **argv)
 {
 	t_node	*stack_a;
 	t_node	*stack_b;
+	t_list	*instructions;
 
 	stack_a = create_stack(argc, argv);
 	stack_b = NULL;
-	exec_instruction(read_instruction(), &stack_a, &stack_b);
-	if (check_issort(stack_a, stack_b))
-		ft_putendl_fd("OK", 1);
+	instructions = read_instruction();
+	if (!exec_instruction(instructions, &stack_a, &stack_b))
+		error_and_clear(stack_a);
 	else
-		ft_putendl_fd("KO", 1);
+	{
+		if (check_issort(stack_a, stack_b))
+			ft_putendl_fd("OK", 1);
+		else
+			ft_putendl_fd("KO", 1);
+	}
 	clear_stack(&stack_b);
 	clear_stack(&stack_a);
+	ft_lstclear(&instructions, free);
 	return (0);
 }

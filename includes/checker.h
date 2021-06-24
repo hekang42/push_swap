@@ -6,7 +6,7 @@
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 19:48:56 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/22 20:54:56 by hekang           ###   ########.fr       */
+/*   Updated: 2021/06/24 09:19:47 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,6 @@ void				clear_stack(t_node **stack);
 void				operator(char *op, t_node **stack_a, t_node **stack_b,
 				int visual);
 int					check_issort(t_node *stack_a, t_node *stack_b);
+void				error_and_clear(t_node *stack);
+
 #endif
