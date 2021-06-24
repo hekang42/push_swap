@@ -6,7 +6,7 @@
 /*   By: hekang <hekang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 15:12:54 by hekang            #+#    #+#             */
-/*   Updated: 2021/06/22 20:55:13 by hekang           ###   ########.fr       */
+/*   Updated: 2021/06/24 10:50:09 by hekang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,6 @@ int					find_from_front(int find, t_node *stack);
 int					find_from_rear(int find, t_node *stack);
 int					find_index_smaller(int find, t_node *stack);
 void				init_var(int *a, int *b, int *c);
+int					check_issort(t_node *stack_a, t_node *stack_b);
+
 #endif
